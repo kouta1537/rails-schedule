@@ -1,0 +1,32 @@
+<%= render "shared/partial" %>
+<%= link_to"一覧に戻る", :tasks %>
+
+<%= @task.title %>
+<%= form_with model: @task do |f| %>
+<table>
+    <tr>
+        <th>タイトル</th>
+        <td><%=  @task.title %></td>
+    </tr>
+    <tr>
+        <th>開始日</th>
+        <td><%=  @task.start_datetime %></td>
+    </tr>
+
+    <tr>
+        <th>終了日</th>
+        <td><%=  @task.end_datetime %></td>
+    </tr>
+
+    <tr>
+        <th>終日</th>
+        <td><%=  @task.is_all_day ? '⚪︎': '' %></td>
+    </tr>
+
+    <tr>
+        <th>スケジュールメモ</th>
+        <td><%=  @task.memo %></td>
+    </tr>
+    </table>
+
+<% end %>
