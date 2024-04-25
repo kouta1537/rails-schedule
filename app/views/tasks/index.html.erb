@@ -20,9 +20,9 @@
         <tr>
         <td><%= task.id %></td>
         <td><%= task.title %></td>
-        <td><%= task.start_datetime %></td>
-        <td><%= task.end_datetime %></td>
-        <td><%= task.is_all_day %></td>
+        <td><%= task.start_datetime.to_s(:datetime) %></td>
+        <td><%= task.end_datetime.to_s(:datetime) %></td>
+        <td><%= task.is_all_day ? '⚪︎': '' %></td>
         <td><%= task.updated_at.to_s(:datetime_jp) %></td>
         <td><%= link_to "詳細",task %></td>
         <td><%= link_to "編集",[:edit,task  ] %></td>
@@ -31,5 +31,11 @@
         <% end %>
     </tbody>
 </table>
+
+<div>
+    <p>予定の合計<%= @tasks.size%></p>
+
+    <p>本日の日付 <%= Date.today.strftime("%Y年%m月%d日")%></p>
+</div>
 
 <p><%= link_to "予定の新規登録", :new_task %></p>

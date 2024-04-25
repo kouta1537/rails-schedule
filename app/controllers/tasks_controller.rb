@@ -10,10 +10,9 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      flash[:notice_create] = "スケジュールを登録しました"
+      flash[:notice] = "スケジュールを登録しました"
       redirect_to :tasks
     else
-      flash[:notice_no_create] = "スケジュールを登録に失敗しました"
       render "new"
     end
   end
@@ -32,7 +31,7 @@ class TasksController < ApplicationController
       flash[:notice_update] = "スケジュールを更新しました"
       redirect_to :tasks
     else
-      flash[:notice_no_update] = "スケジュールを更新に失敗しました"
+      flash[:notice_no_update] = "スケジュールの更新に失敗しました"
       render "edit"
     end
   end
@@ -40,7 +39,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    flash[:notice_destroy] = "スケジュールを削除しました"
+    flash[:notice] = "スケジュールを削除しました"
     redirect_to :tasks
   end
 
